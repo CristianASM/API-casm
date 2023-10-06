@@ -1,14 +1,12 @@
 package com.api.casm.Controller;
 
 import com.api.casm.Model.User;
-import com.api.casm.Service.UserServiceImpl;
+import com.api.casm.Service.ServiceImpl.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -27,11 +25,6 @@ public class UserController {
     public ResponseEntity<User> userId(@PathVariable Long id){
         User userId = userService.getUserId(id);
         return new ResponseEntity<>(userId, HttpStatus.OK);
-    }
-    @GetMapping
-    public ResponseEntity<List<User>> allUsers(){
-        List<User> allUsers = userService.getAllUsers();
-        return new ResponseEntity<>(allUsers, HttpStatus.OK);
     }
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@Valid @PathVariable Long id, @RequestBody User user){

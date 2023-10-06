@@ -1,15 +1,16 @@
-package com.api.casm.Service;
+package com.api.casm.Service.ServiceImpl;
 
 import com.api.casm.Exceptions.UserNotFoundException;
 import com.api.casm.Model.User;
 import com.api.casm.Repository.UserRepository;
+import com.api.casm.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     @Autowired
@@ -20,11 +21,6 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUserId(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
     }
 
     @Override

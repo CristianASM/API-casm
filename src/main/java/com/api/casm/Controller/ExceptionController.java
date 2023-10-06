@@ -1,5 +1,8 @@
 package com.api.casm.Controller;
 
+import com.api.casm.Exceptions.CategoryNotFoundException;
+import com.api.casm.Exceptions.EmptyListException;
+import com.api.casm.Exceptions.ProductNotFoundException;
 import com.api.casm.Exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +24,19 @@ public class ExceptionController {
     public ResponseEntity<String> userNotFound(UserNotFoundException e){
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<String> productNotFound(ProductNotFoundException e){
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<String> categoryNotFound(CategoryNotFoundException e){
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(EmptyListException.class)
+    public ResponseEntity<String> listNotFound(EmptyListException e){
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
