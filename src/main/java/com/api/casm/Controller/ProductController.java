@@ -28,6 +28,14 @@ public class ProductController {
         Product newProduct = productService.saveProduct(product);
         return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
     }
+    @GetMapping("/name/{name}")
+    @Operation(summary = "Get a product by ID")
+    @ApiResponse(responseCode = "200", description = "Product found successfully")
+    @ApiResponse(responseCode = "404", description = "Product not found")
+    public ResponseEntity<Product> getProductByName(@PathVariable String name){
+        Product productByName = productService.getProductByName(name);
+        return new ResponseEntity<>(productByName, HttpStatus.OK);
+    }
     @GetMapping("/{id}")
     @Operation(summary = "Get a product by ID")
     @ApiResponse(responseCode = "200", description = "Product found successfully")

@@ -37,6 +37,14 @@ public class CategoryController {
         Category categoryId = categoryService.getCategory(id);
         return new ResponseEntity<>(categoryId, HttpStatus.OK);
     }
+    @GetMapping("/name/{name}")
+    @Operation(summary = "Get a category by ID")
+    @ApiResponse(responseCode = "200", description = "Category found successfully")
+    @ApiResponse(responseCode = "404", description = "Category not found")
+    public ResponseEntity<Category> getCategoryByName(@PathVariable String name) {
+        Category categoryId = categoryService.getCategoryByName(name);
+        return new ResponseEntity<>(categoryId, HttpStatus.OK);
+    }
 
     @GetMapping
     @Operation(summary = "Get a list of categories")

@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO getUserByUserName(String userName) {
+        User user = userRepository.findUserByUserName(userName);
+        return modelMapper.map(user, UserDTO.class);
+    }
+
+    @Override
     public UserDTO newUser(User user) {
         User savedUser = userRepository.save(user);
         return modelMapper.map(user, UserDTO.class);

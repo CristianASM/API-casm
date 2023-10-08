@@ -35,6 +35,14 @@ public class UserController {
         UserDTO userId = userService.getUserId(id);
         return new ResponseEntity<>(userId, HttpStatus.OK);
     }
+    @GetMapping("/userName/{userName}")
+    @Operation(summary = "Get a user by ID")
+    @ApiResponse(responseCode = "200", description = "User found successfully")
+    @ApiResponse(responseCode = "404", description = "User not found")
+    public ResponseEntity<UserDTO> userId(@PathVariable String userName){
+        UserDTO userByUserName = userService.getUserByUserName(userName);
+        return new ResponseEntity<>(userByUserName, HttpStatus.OK);
+    }
     @PutMapping("/{id}")
     @Operation(summary = "Update a user by ID")
     @ApiResponse(responseCode = "200", description = "User updated successfully")

@@ -26,6 +26,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category getCategoryByName(String name) {
+        return categoryRepository.findCategoryByName(name);
+    }
+
+    @Override
     public List<Category> getCategories() {
         List<Category> allCategories = categoryRepository.findAll();
         if (allCategories.isEmpty()){
