@@ -1,5 +1,6 @@
 package com.api.casm.Controller;
 
+import com.api.casm.Dto.UserDTO;
 import com.api.casm.Model.User;
 import com.api.casm.Service.ServiceImpl.UserServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,16 +23,16 @@ public class UserController {
     @Operation(summary = "Create a new user")
     @ApiResponse(responseCode = "201", description = "User created successfully")
     @ApiResponse(responseCode = "400", description = "Request error")
-    public ResponseEntity<User> newUser(@Valid @RequestBody User user){
-        User newUser = userService.newUser(user);
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    public ResponseEntity<UserDTO> newUser(@Valid @RequestBody User user) {
+        UserDTO newuser = userService.newUser(user);
+        return new ResponseEntity<>(newuser, HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
     @Operation(summary = "Get a user by ID")
     @ApiResponse(responseCode = "200", description = "User found successfully")
     @ApiResponse(responseCode = "404", description = "User not found")
-    public ResponseEntity<User> userId(@PathVariable Long id){
-        User userId = userService.getUserId(id);
+    public ResponseEntity<UserDTO> userId(@PathVariable Long id){
+        UserDTO userId = userService.getUserId(id);
         return new ResponseEntity<>(userId, HttpStatus.OK);
     }
     @PutMapping("/{id}")
@@ -39,9 +40,10 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "User updated successfully")
     @ApiResponse(responseCode = "400", description = "Request error")
     @ApiResponse(responseCode = "404", description = "User not found")
-    public ResponseEntity<User> updateUser(@Valid @PathVariable Long id, @RequestBody User user){
-        User updateuser = userService.updateUser(id, user);
-        return new ResponseEntity<>(updateuser, HttpStatus.OK);
+    public ResponseEntity<UserDTO> updateUser(@Valid @PathVariable Long id, @RequestBody User user){
+        UserDTO updateUser = userService.updateUser(id, user);
+        System.out.println("aca");
+        return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a user by ID")
