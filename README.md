@@ -5,3 +5,4 @@ Tiene implementado:
 -Excepciones personalizadas.                  
 -DTOs usando ModelMapper.                  
 -Tablas relacionales usando MySQL.
+-Test unitarios con JUnit y Mockito
