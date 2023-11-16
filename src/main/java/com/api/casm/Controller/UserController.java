@@ -24,8 +24,8 @@ public class UserController {
     @ApiResponse(responseCode = "201", description = "User created successfully")
     @ApiResponse(responseCode = "400", description = "Request error")
     public ResponseEntity<UserDTO> newUser(@Valid @RequestBody User user) {
-        UserDTO newuser = userService.newUser(user);
-        return new ResponseEntity<>(newuser, HttpStatus.CREATED);
+        UserDTO newUser = userService.newUser(user);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
     @Operation(summary = "Get a user by ID")

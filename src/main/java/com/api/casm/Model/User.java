@@ -5,16 +5,18 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
+@Builder
 @Table(name = "usuarios")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotBlank(message = "the field 'name' cannot be blank")
     @Column(name = "nombre", length = 45)
     private String name;
